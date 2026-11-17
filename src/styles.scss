@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+  "Segoe UI", sans-serif;
+  font-synthesis: none;
+  background: #080e1c;
+  color: #f4f5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #080e1c;
+  color: #f4f5ff;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: #7770ed;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #b2adff;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
