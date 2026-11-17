@@ -36,6 +36,8 @@
     >
       <a href="#inicio" (click)="closeMenu()">Início</a>
       <a href="#projetos" (click)="closeMenu()">Projetos</a>
+      <a href="#experiencia" (click)="closeMenu()">Experiência</a>
+      <a href="#formacao" (click)="closeMenu()">Formação</a>
       <a href="#skills" (click)="closeMenu()">Skills</a>
       <a href="#sobre" (click)="closeMenu()">Sobre</a>
       <a class="mobile-contact" href="#contato" (click)="closeMenu()">
@@ -392,14 +394,140 @@
     </div>
   </section>
 
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia" class="section experience-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">
+            <span>02.</span>
+            EXPERIÊNCIA PROFISSIONAL
+          </p>
+
+          <h2>
+            Experiência que transforma
+            <span>desafios em resultados.</span>
+          </h2>
+
+          <p class="section-description">
+            Trajetória construída em projetos front-end, produtos digitais
+            e soluções orientadas a dados.
+          </p>
+        </div>
+      </div>
+
+      <div class="experience-list">
+        @for (experience of experiences; track experience.company) {
+          <article class="experience-card">
+            <div class="experience-marker" aria-hidden="true">
+              <span></span>
+            </div>
+
+            <div class="experience-main">
+              <div class="experience-heading">
+                <div>
+                  <p class="experience-period">
+                    {{ experience.period }}
+                  </p>
+                  <h3>{{ experience.role }}</h3>
+                  <p class="experience-company">
+                    {{ experience.company }}
+                  </p>
+                </div>
+
+                <span class="experience-index">
+                  {{ (experiences.indexOf(experience) + 1).toString().padStart(2, '0') }}
+                </span>
+              </div>
+
+              <p class="experience-summary">
+                {{ experience.summary }}
+              </p>
+
+              <ul class="experience-highlights">
+                @for (highlight of experience.highlights; track highlight) {
+                  <li>{{ highlight }}</li>
+                }
+              </ul>
+
+              <div class="experience-technologies">
+                @for (technology of experience.technologies; track technology) {
+                  <span>{{ technology }}</span>
+                }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO E CURSOS -->
+  <section id="formacao" class="section education-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">
+            <span>03.</span>
+            FORMAÇÃO E CURSOS
+          </p>
+
+          <h2>
+            Aprendizado contínuo
+            <span>para evoluir sempre.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="education-grid">
+        <article class="education-card education-main-card">
+          <div class="education-icon">学</div>
+          <p class="education-label">FORMAÇÃO ACADÊMICA</p>
+          <h3>{{ education.course }}</h3>
+          <p class="education-institution">
+            {{ education.institution }}
+          </p>
+          <div class="education-meta">
+            <span>{{ education.status }}</span>
+            <span>{{ education.expectedCompletion }}</span>
+          </div>
+        </article>
+
+        <article class="education-card courses-card">
+          <div class="education-card-heading">
+            <div>
+              <p class="education-label">CURSOS COMPLEMENTARES</p>
+              <h3>Conhecimento em movimento</h3>
+            </div>
+            <span class="education-icon">+</span>
+          </div>
+
+          <div class="course-list">
+            @for (course of complementaryCourses; track course.name) {
+              <div class="course-item">
+                <span class="course-bullet"></span>
+                <div>
+                  <strong>{{ course.name }}</strong>
+                  <small>
+                    {{ course.provider }} · {{ course.year }}
+                  </small>
+                </div>
+              </div>
+            }
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- HABILIDADES -->
   <section id="skills" class="section skills-section">
     <div class="container">
       <div class="section-heading">
         <div>
           <p class="section-eyebrow">
-            <span>02.</span>
-            TECNOLOGIAS
+            <span>04.</span>
+            COMPETÊNCIAS TÉCNICAS
           </p>
 
           <h2>
@@ -426,6 +554,21 @@
 
             <div class="skill-tags">
               @for (skill of group.skills; track skill) {
+                <span>{{ skill }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+
+      <div class="competencies-grid">
+        @for (competency of technicalCompetencies; track competency.title) {
+          <article class="competency-card">
+            <h3>{{ competency.title }}</h3>
+            <p>{{ competency.description }}</p>
+
+            <div class="skill-tags">
+              @for (skill of competency.skills; track skill) {
                 <span>{{ skill }}</span>
               }
             </div>
@@ -488,8 +631,8 @@
 
       <div class="about-content">
         <p class="section-eyebrow">
-          <span>03.</span>
-          QUEM SOU EU
+          <span>05.</span>
+          RESUMO PROFISSIONAL
         </p>
 
         <h2>
@@ -497,7 +640,7 @@
           <span>Soluções com propósito.</span>
         </h2>
 
-        <p>{{ profile.about }}</p>
+        <p>{{ professionalSummary }}</p>
 
         <div class="about-highlights">
           <div>
@@ -532,7 +675,7 @@
 
         <div class="contact-content">
           <p class="section-eyebrow">
-            <span>04.</span>
+            <span>06.</span>
             CONTATO
           </p>
 
